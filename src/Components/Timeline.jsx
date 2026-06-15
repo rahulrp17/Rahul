@@ -31,6 +31,11 @@ const timelineData = [
     description:
       "Developed a complete cab booking platform with responsive UI.",
   },
+  {
+    year: "2026",
+    title:"CraftAI Handmade Marketplace",
+    description:"Developed a marketplace for handmade products using React and express.js with JWT authentication , Cloudinary uploads, WhatsApp ordering, and  AI chatbot assistant.",
+  }
 ];
 
 export default function Timeline() {

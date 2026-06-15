@@ -8,30 +8,12 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="
-     min-h-screen
-     flex
-     items-center
-     justify-center
-     px-8
-     lg:px-20
-     md:px-18
-     pt-24
-     pb-12
+      className=" min-h-screen flex items-center justify-center px-8 lg:px-20 md:px-18 pt-24 pb-12
    "
     >
       {" "}
       <div
-        className="
-       max-w-7xl
-       mx-auto
-       w-full
-       grid
-       lg:grid-cols-[300px_1fr]
-       lg:gap-12
-       md:gap-10
-       gap-8
-       items-center
+        className=" max-w-7xl mx-auto w-full grid lg:grid-cols-[300px_1fr] lg:gap-12 md:gap-10 gap-8 items-center
      "
       >
         {/* LEFT CARD */}
@@ -39,51 +21,16 @@ export default function Hero() {
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6 }}
-          className="
-bg-white/5
-backdrop-blur-xl
-border
-border-white/10
-rounded-[30px]
-p-4
-text-center
-lg:max-w-[600px]
-md:max-w-[500px]
-max-w-[400px]
-
-"
-        >
+          className=" bg-white/5 backdrop-blur-xl border border-white/10 rounded-[30px] p-4 text-center lg:max-w-[600px] md:max-w-[500px] max-w-[400px] "         >
           {" "}
           <img
             src={avatar3}
             alt="Rahul"
-            className="
-           w-full
-           max-h-[300px]
-           max-w-[300px]
-           object-contain
-           objext-positiont-center
-           mx-auto
-           rounded-3xl
-           border
-           border-white/10
-           bg-white
-           
+            className=" w-full max-h-[300px] max-w-[300px] object-contain objext-positiont-center mx-auto rounded-3xl border border-white/10 bg-white 
          "
           />
           <div
-            className="
-          mt-3
-          inline-flex
-          items-center
-          gap-2
-          px-4
-          py-2
-          rounded-full
-          border
-          border-white/10
-          bg-green-950
-        "
+            className="  mt-3  inline-flex  items-center  gap-2  px-4  py-2  rounded-full  border  border-white/10  bg-green-950"
           >
             <span className="w-2 h-2 rounded-full bg-green-500"></span>
             <span className="text-sm text-gray-300">Available for Work</span>
@@ -97,16 +44,7 @@ max-w-[400px]
               href="https://github.com/yourusername"
               target="_blank"
               rel="noreferrer"
-              className="
-      w-10 h-10
-      rounded-xl
-      bg-white/5
-      border border-white/10
-      flex items-center justify-center
-      hover:text-white
-      hover:scale-110
-      transition-all
-    "
+              className="  w-10 h-10  rounded-xl  bg-white/5  border border-white/10  flex items-center justify-center  hover:text-white  hover:scale-110  transition-all"
             >
               <FaGithub size={18} />
             </a>
@@ -115,16 +53,7 @@ max-w-[400px]
               href="https://linkedin.com/in/yourusername"
               target="_blank"
               rel="noreferrer"
-              className="
-      w-10 h-10
-      rounded-xl
-      bg-white/5
-      border border-white/10
-      flex items-center justify-center
-      text-[#0A66C2]
-      hover:scale-110
-      transition-all
-    "
+              className="  w-10 h-10  rounded-xl  bg-white/5  border border-white/10  flex items-center justify-center  text-[#0A66C2]  hover:scale-110  transition-all"
             >
               <FaLinkedin size={18} />
             </a>
@@ -235,7 +164,7 @@ max-w-[400px]
                 2000,
                 "UI Developer",
                 2000,
-                "Java Full Stack Developer",
+                "Full Stack Developer",
                 2000,
               ]}
               speed={50}

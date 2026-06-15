@@ -6,7 +6,7 @@ import {
   FaJs,
   FaGithub,
 } from "react-icons/fa";
-import { SiTailwindcss, SiFramer, SiSpringboot , SiRedux} from "react-icons/si";
+import { SiTailwindcss, SiFramer, SiRedux, SiExpress, SiMongodb} from "react-icons/si";
 // import { VscVscode } from "react-icons/vsc";
 
 const skills = [
@@ -50,11 +50,21 @@ const skills = [
     level: 80,
     icon: <SiFramer size={40} color="#0055FF" />,
   },
+  // {
+  //   name: "Spring Boot",
+  //   level: 75,
+  //   icon: <SiSpringboot size={40} color="#6DB33F" />,
+  // },
   {
-    name: "Spring Boot",
-    level: 75,
-    icon: <SiSpringboot size={40} color="#6DB33F" />,
+    name:"Express",
+    level: 80,
+    icon: <SiExpress size={40} color="#0055FF" />,
   },
+  {
+    name:"MongoDB",
+    level: 80,
+    icon: <SiMongodb size={40} color="#47A248" />,
+  }
   // {
   //   name: "VS Code",
   //   level: 95,

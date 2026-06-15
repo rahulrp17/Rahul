@@ -4,9 +4,37 @@ import weather from "../assets/projects/weather.webp";
 import portfolio from "../assets/projects/portfolio.webp";
 import authify from "../assets/projects/authify.webp";
 import todo from "../assets/projects/todo.webp";
-
-
+import craftAI from "../assets/projects/craftAI.png";
 export const projects = [
+  {
+    title: "CraftAI Handmade Marketplace",
+    category: "Full Stack",
+    image: craftAI,
+    description:
+      "AI-powered handmade marketplace with admin dashboard, Cloudinary uploads, and WhatsApp ordering.",
+    tech: [
+      "React",
+      "Express.js",
+      "MongoDB",
+      "Tailwind CSS",
+      "Framer Motion",
+      "JWT",
+      "Cloudinary",
+      "Axios",
+      "OpenRouter AI",
+    ],
+    github: "https://github.com/rahulrp17/CraftAI",
+    demo: "https://craftai-qb66.onrender.com/",
+    features: [
+      "AI Chatbot Assistant",
+      "Admin Dashboard",
+      "Cloudinary Image Upload",
+      "WhatsApp Ordering",
+      "JWT Authentication",
+      "Responsive Design",
+    ],
+  },
+
   {
     title: "Cab Booking App",
     category: "Full Stack",
@@ -62,8 +90,7 @@ export const projects = [
     title: "Weather App",
     category: "API",
     image: weather,
-    description:
-      "Real-time weather forecasting app using API integration.",
+    description: "Real-time weather forecasting app using API integration.",
     tech: ["React", "API"],
     github: "https://github.com/rahulrp17/Weather-App",
     demo: "https://weather-app-cvzb.onrender.com/",
@@ -75,13 +102,11 @@ export const projects = [
     ],
   },
 
-
   {
     title: "Authify",
     category: "full stack",
     image: authify,
-    description:
-      "Authentication system featuring JWT login and registration.",
+    description: "Authentication system featuring JWT login and registration.",
     tech: ["React", "Tailwind", "Spring Boot"],
     github: "https://github.com/rahulrp17/Authentication_System",
     demo: "https://authentication-system-frontend-cukc.onrender.com/",
@@ -97,16 +122,10 @@ export const projects = [
     title: "Todo App",
     category: "Frontend",
     image: todo,
-    description:
-      "Task management application with CRUD functionality.",
+    description: "Task management application with CRUD functionality.",
     tech: ["React", "Tailwind"],
     github: "https://github.com/rahulrp17/Todo_Applicaton",
     demo: "https://todo-applicaton.onrender.com/",
-    features: [
-      "Add Tasks",
-      "Edit Tasks",
-      "Delete Tasks",
-      "Responsive UI",
-    ],
+    features: ["Add Tasks", "Edit Tasks", "Delete Tasks", "Responsive UI"],
   },
 ];
