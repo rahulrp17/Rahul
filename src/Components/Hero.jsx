@@ -8,7 +8,16 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className=" min-h-screen flex items-center justify-center px-8 lg:px-20 md:px-18 pt-24 pb-12
+      className="
+     min-h-screen
+     flex
+     items-center
+     justify-center
+     px-8
+     lg:px-20
+     md:px-18
+     pt-24
+     pb-12
    "
     >
       {" "}
@@ -21,12 +30,36 @@ export default function Hero() {
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6 }}
-          className=" bg-white/5 backdrop-blur-xl border border-white/10 rounded-[30px] p-4 text-center lg:max-w-[600px] md:max-w-[500px] max-w-[400px] "         >
+          className="
+bg-white/5
+backdrop-blur-xl
+border
+border-white/10
+rounded-[30px]
+p-4
+text-center
+lg:max-w-[600px]
+md:max-w-[500px]
+max-w-[400px]
+
+"
+        >
           {" "}
           <img
             src={avatar3}
             alt="Rahul"
-            className=" w-full max-h-[300px] max-w-[300px] object-contain objext-positiont-center mx-auto rounded-3xl border border-white/10 bg-white 
+            className="
+           w-full
+           max-h-[300px]
+           max-w-[300px]
+           object-contain
+           objext-positiont-center
+           mx-auto
+           rounded-3xl
+           border
+           border-white/10
+           bg-white
+           
          "
           />
           <div
@@ -41,7 +74,7 @@ export default function Hero() {
           {/* SOCIALS */}
           <div className="flex justify-center gap-2 mt-4">
             <a
-              href="https://github.com/yourusername"
+              href="https://github.com/rahulrp17"
               target="_blank"
               rel="noreferrer"
               className="  w-10 h-10  rounded-xl  bg-white/5  border border-white/10  flex items-center justify-center  hover:text-white  hover:scale-110  transition-all"
@@ -50,7 +83,7 @@ export default function Hero() {
             </a>
 
             <a
-              href="https://linkedin.com/in/yourusername"
+              href="https://www.linkedin.com/in/rahulrp4021"
               target="_blank"
               rel="noreferrer"
               className="  w-10 h-10  rounded-xl  bg-white/5  border border-white/10  flex items-center justify-center  text-[#0A66C2]  hover:scale-110  transition-all"
@@ -59,7 +92,7 @@ export default function Hero() {
             </a>
 
             <a
-              href="https://instagram.com/yourusername"
+              href="https://www.instagram.com/_rahul._rp?igsh=MTFnZGo4YXJkN3V0cQ=="
               target="_blank"
               rel="noreferrer"
               className="
@@ -77,7 +110,7 @@ export default function Hero() {
             </a>
 
             <a
-              href="mailto:your@email.com"
+              href="mailto:rahulrp4021@gmail.com"
               className="
       w-10 h-10
       rounded-xl

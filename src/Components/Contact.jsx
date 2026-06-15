@@ -43,7 +43,7 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="min-h-screen px-6 lg:px-20 py-20"
+      className="min-h-screen px-6 lg:px-20 py-20 overflow-hidden"
     >
       <div className="max-w-7xl mx-auto">
         {/* Heading */}

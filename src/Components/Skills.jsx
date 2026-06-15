@@ -76,7 +76,7 @@ export default function Skills() {
   return (
     <section
       id="skills"
-      className="min-h-screen px-6 lg:px-20 py-20"
+      className="min-h-screen px-6 lg:px-20 py-20 overflow-hidden"
     >
       {/* Heading */}
       <motion.div

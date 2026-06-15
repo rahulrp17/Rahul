@@ -8,7 +8,6 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Footer from "./Components/Footer";
 import ScrollProgress from "./Components/ScrollProgress";
-import ParticlesBackground from "./Components/ParticlesBackground";
 // import Stats from "./Components/Stats";
 import Timeline from "./Components/Timeline";
 // import Cursor from "./Components/Cursor";
@@ -35,21 +34,20 @@ function App() {
   }
   return (
     <div className="bg-[#0a0a0a] text-white">
-      <ScrollProgress />
-      <ParticlesBackground />
+       <ScrollProgress />
       {/* <Cursor /> */}
       <Navbar />
-      <SocialSidebar />
-      <Hero />
-      <BackToTop />
+      <SocialSidebar /> 
+      <Hero /> 
+      <BackToTop /> 
       {/* <Stats /> */}
-      <About />           
+      <About /> 
       <Skills />
-      <Timeline />
+      <Timeline /> 
       <Projects />
-      <CTA />
+      <CTA /> 
       <Contact />
-      <ToastContainer position="top-right" autoClose={3000} />
+      <ToastContainer position="top-right" autoClose={3000} /> 
       <Footer />
     </div>
   );

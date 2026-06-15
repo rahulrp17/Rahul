@@ -287,7 +287,7 @@ export default function Projects() {
                         "
                       >
                         <FaExternalLinkAlt />
-                        Demo
+                        Live Demo
                       </a>
 
                       <a

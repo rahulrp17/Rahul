@@ -98,7 +98,7 @@ export default function Footer() {
               </a>
 
               <a
-                href="YOUR_LINKEDIN_URL"
+                href="https://www.linkedin.com/in/rahulrp4021"
                 target="_blank"
                 rel="noreferrer"
                 className="
@@ -114,7 +114,7 @@ export default function Footer() {
               </a>
 
               <a
-                href="mailto:YOUR_EMAIL@gmail.com"
+                href="mailto:rahulrp4021@gmail.com"
                 className="
                   w-12 h-12
                   rounded-full
