@@ -16,7 +16,7 @@ import { useEffect, useState } from "react";
 import Loader from "./Components/Loader";
 import SocialSidebar from "./Components/SocialSideBar";
 import BackToTop from "./Components/BackToTop";
-
+import Services from "./Components/Services";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -45,6 +45,7 @@ function App() {
       <Skills />
       <Timeline /> 
       <Projects />
+      <Services />
       <CTA /> 
       <Contact />
       <ToastContainer position="top-right" autoClose={3000} /> 

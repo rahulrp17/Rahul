@@ -8,16 +8,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="
-     min-h-screen
-     flex
-     items-center
-     justify-center
-     px-8
-     lg:px-20
-     md:px-18
-     pt-24
-     pb-12
+      className=" min-h-screen flex items-center justify-center px-8 lg:px-20 md:px-18 pt-24 pb-12
    "
     >
       {" "}

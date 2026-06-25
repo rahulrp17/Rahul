@@ -29,7 +29,7 @@ export default function Footer() {
             </h2>
 
             <p className="text-gray-400 mt-4 leading-relaxed">
-              Frontend Developer & Java Full Stack Developer
+              Frontend Developer & React Developer
               passionate about building modern web
               applications and engaging user experiences.
             </p>
