@@ -89,16 +89,7 @@ export default function Projects() {
         {/* Projects Grid */}
         <motion.div
           layout
-          className="
-            grid
-            grid-cols-1
-            md:grid-cols-2
-            lg:grid-cols-3
-            gap-6
-            max-w-7xl
-            mx-auto
-            
-          "
+          className="  grid  grid-cols-1  md:grid-cols-2  lg:grid-cols-3  gap-6  max-w-7xl  mx-auto  "
           viewport={{ once: false }}
           whileInView={{
             opacity: 1,
@@ -146,35 +137,12 @@ export default function Projects() {
                       project
                     )
                   }
-                  className="
-                    relative
-                    bg-white/5
-                    backdrop-blur-md
-                    border border-white/10
-                    rounded-3xl
-                    overflow-hidden
-                    cursor-pointer
-                    hover:border-orange-500
-                    hover:shadow-[0_0_30px_rgba(249,115,22,0.3)]
-                    transition-all
-                    
-                  "
+                  className="  relative  bg-white/5  backdrop-blur-md  border border-white/10  rounded-3xl  overflow-hidden  cursor-pointer  hover:border-orange-500  hover:shadow-[0_0_30px_rgba(249,115,22,0.3)]  transition-all  "
                 >
                   {/* Featured Badge */}
                   {project.featured && (
                     <span
-                      className="
-                        absolute
-                        top-3
-                        right-3
-                        z-20
-                        bg-orange-500
-                        px-3
-                        py-1
-                        rounded-full
-                        text-xs
-                        text-white
-                      "
+                      className="  absolute  top-3  right-3  z-20  bg-orange-500  px-3  py-1  rounded-full  text-xs  text-white"
                     >
                       Featured
                     </span>
@@ -185,30 +153,12 @@ export default function Projects() {
                     <img
                       src={project.image}
                       alt={project.title}
-                      className="
-                        w-full
-                        h-52
-                        object-cover
-                        transition-all
-                        duration-500
-                        group-hover:scale-110
-                      "
+                      className="  w-full  h-52  object-cover  transition-all  duration-500  group-hover:scale-110"
                     />
 
                     {/* Overlay */}
                     <div
-                      className="
-                        absolute
-                        inset-0
-                        bg-black/70
-                        opacity-0
-                        group-hover:opacity-100
-                        transition-all
-                        duration-300
-                        flex
-                        items-center
-                        justify-center
-                      "
+                      className="  absolute  inset-0  bg-black/70  opacity-0  group-hover:opacity-100  transition-all  duration-300  flex  items-center  justify-center"
                     >
                       <button
                         onClick={(e) => {
@@ -217,17 +167,7 @@ export default function Projects() {
                             project
                           );
                         }}
-                        className="
-                          px-5
-                          py-2
-                          bg-orange-500
-                          rounded-full
-                          text-white
-                          cursor-pointer
-                          hover:bg-orange-600
-                          transition-all
-                          duration-300
-                        "
+                        className="  px-5  py-2  bg-orange-500  rounded-full  text-white  cursor-pointer  hover:bg-orange-600  transition-all  duration-300"
                       >
                         View Details
                       </button>
@@ -250,14 +190,7 @@ export default function Projects() {
                         (tech) => (
                           <span
                             key={tech}
-                            className="
-                              px-3
-                              py-1
-                              rounded-full
-                              text-xs
-                              bg-orange-500/10
-                              text-orange-400
-                            "
+                            className="  px-3  py-1  rounded-full  text-xs  bg-orange-500/10  text-orange-400"
                           >
                             {tech}
                           </span>
@@ -274,17 +207,7 @@ export default function Projects() {
                         onClick={(e) =>
                           e.stopPropagation()
                         }
-                        className="
-                          flex
-                          items-center
-                          gap-2
-                          px-4
-                          py-2
-                          bg-orange-500
-                          rounded-full
-                          text-sm
-                          hover:bg-orange-600
-                        "
+                        className="  flex  items-center  gap-2  px-4  py-2  bg-orange-500  rounded-full  text-sm  hover:bg-orange-600 "
                       >
                         <FaExternalLinkAlt />
                         Live Demo
@@ -297,18 +220,7 @@ export default function Projects() {
                         onClick={(e) =>
                           e.stopPropagation()
                         }
-                        className="
-                          flex
-                          items-center
-                          gap-2
-                          px-4
-                          py-2
-                          border
-                          border-orange-500
-                          rounded-full
-                          text-sm
-                          hover:bg-orange-500/10
-                        "
+                        className="  flex  items-center  gap-2  px-4  py-2  border  border-orange-500  rounded-full  text-sm  hover:bg-orange-500/10"
                       >
                         <FaGithub />
                         GitHub

@@ -7,7 +7,7 @@ import {
   FaTools,
 } from "react-icons/fa";
 
-const servicesData = [
+export const servicesData = [
   {
     id: 1,
     title: "Portfolio Website",
@@ -117,4 +117,3 @@ const servicesData = [
   },
 ];
 
-export default servicesData;

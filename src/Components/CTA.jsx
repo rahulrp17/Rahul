@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 
 export default function CTA({ onBookNow }) {
   return (
-    <section className="px-6 lg:px-20 py-24">
+    <section className="px-6 lg:px-20 lg:py-8 py-8">
      <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}

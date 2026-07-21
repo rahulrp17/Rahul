@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import servicesData from "../Data/servicesData";
+import {servicesData} from "../Data/ServicesData";
 
 export default function Services({ onBookNow }) {
   return (

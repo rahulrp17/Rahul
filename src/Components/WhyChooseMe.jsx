@@ -57,7 +57,7 @@ export default function WhyChooseMe() {
   return (
     <section
       id="why-choose-me"
-      className="bg-[#0a0a0a] py-16 sm:py-20 lg:py-28 px-5 sm:px-8 lg:px-20 overflow-hidden"
+      className="bg-[#0a0a0a] py-16 sm:py-15 lg:py-18 px-5 sm:px-8 lg:px-20 overflow-hidden"
     >
       <div className="max-w-7xl mx-auto">
         {/* Heading */}
@@ -69,7 +69,7 @@ export default function WhyChooseMe() {
           viewport={{ once: true }}
           className="text-center mb-14"
         >
-          <span className="inline-block text-orange-500 text-sm sm:text-base font-semibold tracking-[4px] uppercase">
+          <span className="inline-block text-orange-500 text-sm sm:text-base font-bold tracking-[4px] uppercase">
             Why Choose Me
           </span>
 
