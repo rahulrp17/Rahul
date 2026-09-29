@@ -5,7 +5,54 @@ import portfolio from "../assets/projects/portfolio.webp";
 import authify from "../assets/projects/authify.webp";
 import todo from "../assets/projects/todo.webp";
 import craftAI from "../assets/projects/craftAI.png";
+import AureliaStay from "../assets/projects/image.png";
 export const projects = [
+
+  {
+    title: "AureliaStay Hotel Booking Website",
+    category: "Full Stack",
+    image: AureliaStay,
+    description:
+      "A secure and user-friendly hotel booking website with authentication and admin dashboard.",
+    tech: ["React", "Tailwind", "Framer Motion", "Express.js", "MongoDB", "JWT"],
+    github: "https://github.com/rahulrp17/AureliaStay",
+    demo: "https://aureliastay.vercel.app/",
+    features: [
+      "Hotel Booking",
+      "Responsive Design",
+      "Modern UI",
+      "Authentication",
+      "Admin Dashboard",
+      "Customer Dashboard",
+      "Rating and Review System",
+      "Email Notification",
+    ],
+  },
+
+  {
+    title: "GenZRides Cab Booking App",
+    category: "Full Stack",
+    image: cab,
+    featured: false,
+    description:
+      "A responsive cab booking platform with ride booking, live Tracking, and modern UI.",
+    tech: ["React", "Tailwind", "Framer Motion", "Express.js", "MongoDB", "Cloudinary",],
+    github: "https://github.com/rahulrp17/GenZRides",
+    demo: "https://genzrides.vercel.app/",
+    features: [
+      "Ride Booking",
+      "Responsive Design",
+      "Modern UI",
+      "Authentication",
+      "Admin Dashboard",
+      "Driver Dashboard",
+      "Customer Dashboard",
+      "Live Ride Tracking",
+      "Ride History",
+      "Rating and Review System",
+      "Email Notification",
+    ],
+  },
   {
     title: "CraftAI Handmade Marketplace",
     category: "Full Stack",
@@ -35,23 +82,6 @@ export const projects = [
     ],
   },
 
-  {
-    title: "Cab Booking App",
-    category: "Full Stack",
-    image: cab,
-    featured: false,
-    description:
-      "A responsive cab booking platform with ride booking, authentication, and modern UI.",
-    tech: ["React", "Tailwind", "Framer Motion"],
-    github: "https://github.com/rahulrp17/let-s-Go-Cab",
-    demo: "https://let-s-go-cab.onrender.com/",
-    features: [
-      "Ride Booking",
-      "Responsive Design",
-      "Modern UI",
-      "Authentication",
-    ],
-  },
 
   {
     title: "Food Delivery App",

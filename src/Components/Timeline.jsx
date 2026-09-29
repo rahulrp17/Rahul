@@ -27,15 +27,21 @@ const timelineData = [
   },
   {
     year: "2026",
-    title: "Cab Booking App",
-    description:
-      "Developed a complete cab booking platform with responsive UI.",
+    title:"CraftAI Handmade Marketplace",
+    description:"Developed a marketplace for handmade products using React and express.js with JWT authentication , Cloudinary uploads, WhatsApp ordering, and  AI chatbot assistant.",
   },
   {
     year: "2026",
-    title:"CraftAI Handmade Marketplace",
-    description:"Developed a marketplace for handmade products using React and express.js with JWT authentication , Cloudinary uploads, WhatsApp ordering, and  AI chatbot assistant.",
-  }
+    title: "AureliaStay",
+    description:
+      "Developed a secure and user-friendly hotel booking website with authentication and admin dashboard.",
+  },
+  {
+    year: "2026",
+    title: "Cab Booking App",
+    description:
+      "Developed a complete cab booking platform with responsive UI,live tracking, and admin dashboard,Driver Dashboard,Customer Dashboard.",
+  },
 ];
 
 export default function Timeline() {
