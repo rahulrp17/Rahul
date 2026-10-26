@@ -60,7 +60,7 @@ max-w-[400px]
             <span className="text-sm text-gray-300">Available for Work</span>
           </div>
           <h2 className="text-2xl font-bold mt-3">Rahul</h2>
-          <p className="text-gray-400 text-sm">Frontend Developer</p>
+          <p className="text-gray-400 text-sm">MERN Stack Developer</p>
           {/* SOCIALS */}
           {/* SOCIALS */}
           <div className="flex justify-center gap-2 mt-4">
@@ -225,10 +225,9 @@ max-w-[400px]
           lg:mx-0
         "
           >
-            Passionate Frontend Developer specializing in React.js, JavaScript
-            and Tailwind CSS. I build modern, responsive and user-friendly web
-            applications with smooth animations, clean code and exceptional user
-            experiences.
+            I am a passionate and skilled MERN Stack Developer with a strong background in building responsive web applications.
+            I have a deep understanding of the MERN stack, including React.js, Node.js, Express, and MongoDB.
+            I specialize in creating dynamic and interactive user interfaces, optimizing performance, and ensuring a seamless user experience.
           </p>
 
           <div

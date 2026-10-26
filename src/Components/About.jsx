@@ -8,7 +8,7 @@ export default function About() {
       subtitle: "Projects",
     },
     {
-      title: "React",
+      title: "MERN Stack",
       subtitle: "Developer",
     },
     {
@@ -63,15 +63,15 @@ export default function About() {
           </p>
 
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            Frontend Developer
+            MERN Stack Developer
           </h2>
 
+
+
           <p className="text-gray-400 leading-8 text-lg">
-            I'm passionate about building modern,
-            responsive and user-friendly web applications.
-            I enjoy creating beautiful digital experiences
-            using React.js, JavaScript, Tailwind CSS,
-            Framer Motion and modern frontend technologies.
+            I am a passionate and skilled MERN Stack Developer with a strong background in building responsive web applications.
+            I have a deep understanding of the MERN stack, including React.js, Node.js, Express, and MongoDB.
+            I specialize in creating dynamic and interactive user interfaces, optimizing performance, and ensuring a seamless user experience.
           </p>
 
           {/* Stats Cards */}
