@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { AnimatePresence } from "framer-motion";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -8,8 +9,10 @@ import About from "./Components/About";
 import Skills from "./Components/Skills";
 import Timeline from "./Components/Timeline";
 import Projects from "./Components/Projects";
+import GitHubActivity from "./Components/GitHubActivity";
 import Services from "./Components/Services";
 import WhyChooseMe from "./Components/WhyChooseMe";
+import DevNotes from "./Components/DevNotes";
 import CTA from "./Components/CTA";
 import Contact from "./Components/Contact";
 import Footer from "./Components/Footer";
@@ -23,93 +26,96 @@ import BookNowModal from "./Components/BookNowModal";
 
 function App() {
   const [loading, setLoading] = useState(true);
+  const [introComplete, setIntroComplete] = useState(false);
 
-  // Book Modal States
   const [isBookOpen, setIsBookOpen] = useState(false);
   const [selectedService, setSelectedService] = useState("");
 
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 2500);
+    }, 2200);
 
     return () => clearTimeout(timer);
   }, []);
 
-  // Open Booking Modal
+  useEffect(() => {
+    document.body.style.overflow = introComplete ? "" : "hidden";
+
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [introComplete]);
+
   const openBooking = (service) => {
     setSelectedService(service);
     setIsBookOpen(true);
   };
 
-  // Close Booking Modal
   const closeBooking = () => {
     setIsBookOpen(false);
     setSelectedService("");
   };
 
-  if (loading) {
-    return <Loader />;
-  }
-
   return (
-    <div className="bg-[#0a0a0a] text-white overflow-x-hidden">
-      {/* Scroll Progress */}
-      <ScrollProgress />
+    <>
+      <div
+        className="app-shell"
+        inert={!introComplete}
+        aria-hidden={!introComplete ? "true" : undefined}
+      >
+        <ScrollProgress />
 
-      {/* Navbar */}
-      <Navbar />
+        <Navbar />
 
-      {/* Social Sidebar */}
-      <SocialSidebar />
+        <SocialSidebar />
 
-      {/* Back To Top */}
-      <BackToTop />
+        <BackToTop />
 
-      {/* Hero */}
-      <Hero />
+        <main>
+          <Hero />
 
-      {/* About */}
-      <About />
+          <About />
 
-      {/* Skills */}
-      <Skills />
+          <Skills />
 
-      {/* Timeline */}
-      <Timeline />
+          <Timeline />
 
-      {/* Projects */}
-      <Projects />
+          <Projects />
 
-      {/* Services */}
-      <Services onBookNow={openBooking} />
+          <GitHubActivity />
 
-      {/* Why Choose Me */}
-      <WhyChooseMe onBookNow={openBooking} />
+          <Services onBookNow={openBooking} />
 
-      {/* CTA */}
-      <CTA onBookNow={openBooking} />
+          <WhyChooseMe />
 
-      {/* Contact */}
-      <Contact />
+          <DevNotes />
 
-      {/* Footer */}
-      <Footer />
+          <Contact />
 
-      {/* Booking Modal */}
-      <BookNowModal
-        isOpen={isBookOpen}
-        onClose={closeBooking}
-        selectedService={selectedService}
-      />
+          <CTA onBookNow={openBooking} />
+        </main>
 
-      {/* Toast */}
-      <ToastContainer
-        position="top-right"
-        autoClose={3000}
-        theme="dark"
-      />
-    </div>
+        <Footer />
+
+        <BookNowModal
+          key={isBookOpen ? `booking-${selectedService}` : "booking-closed"}
+          isOpen={isBookOpen}
+          onClose={closeBooking}
+          selectedService={selectedService}
+        />
+
+        <ToastContainer
+          position="top-right"
+          autoClose={3000}
+          theme="light"
+        />
+      </div>
+
+      <AnimatePresence onExitComplete={() => setIntroComplete(true)}>
+        {loading && <Loader key="intro-loader" />}
+      </AnimatePresence>
+    </>
   );
 }
 

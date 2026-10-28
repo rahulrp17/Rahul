@@ -10,7 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@emailjs/browser": "^4.4.1",
+    "@emailjs/browser": "^5.0.3",
     "@tailwindcss/line-clamp": "^0.4.4",
     "@tailwindcss/vite": "^4.3.0",
     "@tsparticles/react": "^3.0.0",

@@ -1,57 +1,45 @@
-import {
-  FaGithub,
-  FaLinkedin,
-  FaEnvelope,
-  FaFilePdf,
-} from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaEnvelope, FaFilePdf } from "react-icons/fa";
 
 export default function SocialSidebar() {
   return (
-    <div
-      className="
-        fixed
-        left-4
-        top-1/2
-        -translate-y-1/2
-        hidden
-        lg:flex
-        flex-col
-        gap-4
-        z-50
-      "
-    >
+    <nav className="nb-social-rail" aria-label="Social links">
       <a
         href="https://github.com/rahulrp17"
         target="_blank"
         rel="noreferrer"
-        className="p-3 bg-white/10 rounded-full hover:bg-orange-500 transition"
+        className="nb-icon-btn"
+        aria-label="GitHub profile"
       >
-        <FaGithub size={20} />
+        <FaGithub aria-hidden="true" />
       </a>
 
       <a
-        href="https://linkedin.com"
+        href="https://www.linkedin.com/in/rahulrp4021"
         target="_blank"
         rel="noreferrer"
-        className="p-3 bg-white/10 rounded-full hover:bg-orange-500 transition"
+        className="nb-icon-btn"
+        aria-label="LinkedIn profile"
       >
-        <FaLinkedin size={20} />
+        <FaLinkedin aria-hidden="true" />
       </a>
 
       <a
-        href="mailto:your@email.com"
-        className="p-3 bg-white/10 rounded-full hover:bg-orange-500 transition"
+        href="mailto:rahulrp4021@gmail.com"
+        className="nb-icon-btn"
+        aria-label="Email Rahul"
       >
-        <FaEnvelope size={20} />
+        <FaEnvelope aria-hidden="true" />
       </a>
 
       <a
         href="/resume.pdf"
         target="_blank"
-        className="p-3 bg-white/10 rounded-full hover:bg-orange-500 transition"
+        rel="noreferrer"
+        className="nb-icon-btn"
+        aria-label="Open Rahul's resume"
       >
-        <FaFilePdf size={20} />
+        <FaFilePdf aria-hidden="true" />
       </a>
-    </div>
+    </nav>
   );
 }

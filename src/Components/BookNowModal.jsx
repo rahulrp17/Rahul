@@ -1,66 +1,82 @@
-import { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
 import {
   FaWhatsapp,
-  FaTimes,
-  FaUser,
-  FaEnvelope,
-  FaPhone,
-  FaGlobe,
+  FaBolt,
+  FaShieldAlt,
+  FaStar,
 } from "react-icons/fa";
 
+const emptyForm = {
+  service: "",
+  name: "",
+  email: "",
+  phone: "",
+  company: "",
+  budget: "",
+  timeline: "",
+  details: "",
+};
+
 export default function BookNowModal({ isOpen, onClose, selectedService }) {
-  const [form, setForm] = useState({
+  const closeRef = useRef(null);
+  const modalRef = useRef(null);
+  const [form, setForm] = useState(() => ({
+    ...emptyForm,
     service: selectedService || "",
-    name: "",
-    email: "",
-    phone: "",
-    company: "",
-    budget: "",
-    timeline: "",
-    details: "",
-  });
+  }));
 
   useEffect(() => {
     if (!isOpen) return;
 
-    setForm({
-      service: selectedService || "",
-      name: "",
-      email: "",
-      phone: "",
-      company: "",
-      budget: "",
-      timeline: "",
-      details: "",
-    });
-  }, [isOpen, selectedService]);
+    const previousFocus = document.activeElement;
 
-  useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "auto";
-    }
+    document.body.style.overflow = "hidden";
+    closeRef.current?.focus();
 
     return () => {
-      document.body.style.overflow = "auto";
+      document.body.style.overflow = "";
+
+      if (previousFocus instanceof HTMLElement) {
+        previousFocus.focus();
+      }
     };
   }, [isOpen]);
 
   useEffect(() => {
-    const handleEsc = (e) => {
+    if (!isOpen) return;
+
+    const handleKeyDown = (e) => {
       if (e.key === "Escape") {
         onClose();
+        return;
+      }
+
+      if (e.key !== "Tab") return;
+
+      const focusable = modalRef.current?.querySelectorAll(
+        'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
+      );
+
+      if (!focusable?.length) return;
+
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
       }
     };
 
-    window.addEventListener("keydown", handleEsc);
+    window.addEventListener("keydown", handleKeyDown);
 
     return () => {
-      window.removeEventListener("keydown", handleEsc);
+      window.removeEventListener("keydown", handleKeyDown);
     };
-  }, [onClose]);
+  }, [isOpen, onClose]);
 
   const handleChange = (e) => {
     setForm({
@@ -77,48 +93,36 @@ export default function BookNowModal({ isOpen, onClose, selectedService }) {
 
     const phoneNumber = "919342830199";
 
-    const message = `
-🚀 *New Website Inquiry*
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📌 Service: ${form.service}
+    const message = `*New Website Inquiry*
+-------------------------
+Service: ${form.service}
 
-👤 Name: ${form.name}
+Name: ${form.name}
 
-📧 Email: ${form.email}
+Email: ${form.email}
 
-📱 Phone: ${form.phone}
+Phone: ${form.phone}
 
-🏢 Company: ${form.company || "N/A"}
+Company: ${form.company || "N/A"}
 
-💰 Budget: ${form.budget || "Not Specified"}
+Budget: ${form.budget || "Not Specified"}
 
-⏳ Timeline: ${form.timeline || "Not Specified"}
+Timeline: ${form.timeline || "Not Specified"}
 
-📝 Project Details:
-  ${form.details}
-`;
+Project Details:
+${form.details}`;
 
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
 
-    // Open WhatsApp
     window.open(whatsappUrl, "_blank");
 
-    // Close Modal
     onClose();
 
-    // Reset Form
     setForm({
+      ...emptyForm,
       service: selectedService || "",
-      name: "",
-      email: "",
-      phone: "",
-      company: "",
-      budget: "",
-      timeline: "",
-      details: "",
     });
 
-    // Scroll back to Services section
     setTimeout(() => {
       const section = document.getElementById("services");
 
@@ -131,341 +135,216 @@ export default function BookNowModal({ isOpen, onClose, selectedService }) {
     }, 300);
   };
 
+  if (!isOpen) return null;
+
   return (
-    <AnimatePresence>
-      {isOpen && (
-        <motion.div
-          onClick={onClose}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          className="  fixed  inset-0  z-[999]  bg-black/70  backdrop-blur-md  flex  items-center  justify-center  p-4"
-        >
-          <motion.div
-            onClick={(e) => e.stopPropagation()}
-            initial={{
-              opacity: 0,
-              scale: 0.9,
-              y: 40,
-            }}
-            animate={{
-              opacity: 1,
-              scale: 1,
-              y: 0,
-            }}
-            exit={{
-              opacity: 0,
-              scale: 0.9,
-            }}
-            transition={{
-              duration: 0.3,
-            }}
-            className="  w-full  max-w-4xl  max-h-[90vh]  overflow-y-auto  rounded-3xl  bg-[#111]  border  border-white/10  shadow-2xl"
+    <div className="nb-modal-backdrop" onClick={onClose}>
+      <div
+        ref={modalRef}
+        className="nb-modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="booking-modal-title"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <div className="nb-modal__head">
+          <div>
+            <h2 id="booking-modal-title">Book Your Project</h2>
+            <p>Let&apos;s discuss your project requirements</p>
+          </div>
+
+          <button
+            ref={closeRef}
+            type="button"
+            onClick={onClose}
+            className="nb-modal__close"
+            aria-label="Close booking form"
           >
-            <div className="  sticky  top-0  z-10  bg-[#111]  border-b  border-white/10  p-6  flex  items-center  justify-between">
-              <div>
-                <h2 className="text-3xl font-bold">Book Your Project</h2>
+            &times;
+          </button>
+        </div>
 
-                <p className="text-gray-400 mt-1">
-                  Let's discuss your project requirements
-                </p>
-              </div>
+        <div className="nb-modal__body">
+          <div className="nb-modal__form">
+            <div className="nb-field nb-field--full">
+              <label className="nb-label" htmlFor="booking-service">
+                Selected Service
+              </label>
 
-              <button
-                onClick={onClose}
-                className="  w-12  h-12  rounded-full  bg-white/5  hover:bg-amber-600 hover:text-white transition-colors duration-300  flex  items-center  justify-center cursor-pointer"
-              >
-                <FaTimes />
-              </button>
+              <input
+                id="booking-service"
+                type="text"
+                name="service"
+                value={form.service}
+                readOnly
+                className="nb-input"
+              />
             </div>
 
-            <div className="p-8">
-              <div className="grid md:grid-cols-2 gap-6">
-                {/* Selected Service */}
-                <div className="md:col-span-2">
-                  <label className="text-sm text-gray-400">
-                    Selected Service
-                  </label>
+            <div className="nb-field">
+              <label className="nb-label" htmlFor="booking-name">
+                Full Name *
+              </label>
 
-                  <input
-                    type="text"
-                    value={form.service}
-                    readOnly
-                    className="  w-full  mt-2  p-4  rounded-2xl  bg-orange-500/10  border  border-orange-500/30  text-orange-400  cursor-not-allowed"
-                  />
-                </div>
-
-                {/* Name */}
-                <div>
-                  <label className="text-sm text-gray-400">Full Name *</label>
-
-                  <div className="relative mt-2">
-                    <FaUser className="absolute left-5 top-1/2 -translate-y-1/2 text-orange-500" />
-
-                    <input
-                      type="text"
-                      name="name"
-                      value={form.name}
-                      onChange={handleChange}
-                      placeholder=""
-                      className="  w-full  pl-14  pr-4  py-4  rounded-2xl  bg-white/5  border  border-white/10  focus:border-orange-500  outline-none  transition"
-                    />
-                  </div>
-                </div>
-
-                {/* Email */}
-                <div>
-                  <label className="text-sm text-gray-400">
-                    Email Address *
-                  </label>
-
-                  <div className="relative mt-2">
-                    <FaEnvelope className="absolute left-5 top-1/2 -translate-y-1/2 text-orange-500" />
-
-                    <input
-                      type="email"
-                      name="email"
-                      value={form.email}
-                      onChange={handleChange}
-                      placeholder=""
-                      className="  w-full  pl-14  pr-4  py-4  rounded-2xl  bg-white/5  border  border-white/10  focus:border-orange-500  outline-none  transition"
-                    />
-                  </div>
-                </div>
-
-                {/* Phone */}
-                <div>
-                  <label className="text-sm text-gray-400">
-                    Phone Number *
-                  </label>
-
-                  <div className="relative mt-2">
-                    <FaPhone className="absolute left-5 top-1/2 -translate-y-1/2 text-orange-500" />
-
-                    <input
-                      type="text"
-                      name="phone"
-                      value={form.phone}
-                      onChange={handleChange}
-                      placeholder=""
-                      className="  w-full  pl-14  pr-4  py-4  rounded-2xl  bg-white/5  border  border-white/10  focus:border-orange-500  outline-none"
-                    />
-                  </div>
-                </div>
-
-                {/* Company */}
-                <div>
-                  <label className="text-sm text-gray-400">
-                    Company / Brand
-                  </label>
-
-                  <div className="relative mt-2">
-                    <FaGlobe className="absolute left-5 top-1/2 -translate-y-1/2 text-orange-500" />
-
-                    <input
-                      type="text"
-                      name="company"
-                      value={form.company}
-                      onChange={handleChange}
-                      placeholder=""
-                      className="  w-full  pl-14  pr-4  py-4  rounded-2xl  bg-white/5  border  border-white/10  focus:border-orange-500  outline-none"
-                    />
-                  </div>
-                </div>
-
-                {/* Budget */}
-                <div>
-                  <label className="text-sm text-gray-400">Budget</label>
-
-                  <select
-                    name="budget"
-                    value={form.budget}
-                    onChange={handleChange}
-                    className="  w-full  mt-2  px-5  py-4  rounded-2xl  bg-[#1b1b1b]  border  border-gray-700  text-white  outline-none  transition-all  duration-300  focus:border-orange-500  focus:ring-2  focus:ring-orange-500/30  cursor-pointer
-  "
-                  >
-                    <option value="" className="bg-[#1b1b1b] text-gray-400">
-                      Select Budget
-                    </option>
-
-                    <option
-                      value="₹5,000 - ₹10,000"
-                      className="bg-[#1b1b1b] text-white"
-                    >
-                      ₹5,000 - ₹10,000
-                    </option>
-
-                    <option
-                      value="₹10,000 - ₹20,000"
-                      className="bg-[#1b1b1b] text-white"
-                    >
-                      ₹10,000 - ₹20,000
-                    </option>
-
-                    <option
-                      value="₹20,000 - ₹40,000"
-                      className="bg-[#1b1b1b] text-white"
-                    >
-                      ₹20,000 - ₹40,000
-                    </option>
-
-                    <option
-                      value="₹40,000+"
-                      className="bg-[#1b1b1b] text-white"
-                    >
-                      ₹40,000+
-                    </option>
-                  </select>
-                </div>
-
-                {/* Timeline */}
-                <div>
-                  <label className="text-sm text-gray-400">Timeline</label>
-
-                  <select
-                    name="timeline"
-                    value={form.timeline}
-                    onChange={handleChange}
-                    className="  w-full  mt-2  px-5  py-4  rounded-2xl  bg-[#1b1b1b]  border  border-gray-700  text-white  outline-none  transition-all  duration-300  focus:border-orange-500  focus:ring-2  focus:ring-orange-500/30  cursor-pointer
-  "
-                  >
-                    <option value="" className="bg-[#1b1b1b] text-gray-400">
-                      Select Timeline
-                    </option>
-
-                    <option
-                      value="Within 1 Week"
-                      className="bg-[#1b1b1b] text-white"
-                    >
-                      🚀 Within 1 Week
-                    </option>
-
-                    <option
-                      value="2-3 Weeks"
-                      className="bg-[#1b1b1b] text-white"
-                    >
-                      ⚡ 2–3 Weeks
-                    </option>
-
-                    <option value="1 Month" className="bg-[#1b1b1b] text-white">
-                      📅 1 Month
-                    </option>
-
-                    <option
-                      value="1-2 Months"
-                      className="bg-[#1b1b1b] text-white"
-                    >
-                      🗓️ 1–2 Months
-                    </option>
-
-                    <option
-                      value="More than 2 Months"
-                      className="bg-[#1b1b1b] text-white"
-                    >
-                      ⏳ More than 2 Months
-                    </option>
-
-                    <option
-                      value="Flexible"
-                      className="bg-[#1b1b1b] text-white"
-                    >
-                      🤝 I'm Flexible
-                    </option>
-                  </select>
-                </div>
-
-                {/* Project Details */}
-                <div className="md:col-span-2">
-                  <label className="text-sm text-gray-400">
-                    Project Details *
-                  </label>
-
-                  <textarea
-                    rows={6}
-                    name="details"
-                    value={form.details}
-                    onChange={handleChange}
-                    placeholder="Tell me about your project..."
-                    className="  w-full  mt-2  p-4  rounded-2xl  bg-white/5  border  border-white/10  focus:border-orange-500  outline-none  resize-none"
-                  />
-                </div>
-              </div>
-
-              {/* Bottom Action Area */}
-              <motion.div
-                initial={{ opacity: 0, y: 25 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3 }}
-                className="
-                  mt-10
-                  pt-8
-                  border-t
-                  border-white/10
-                "
-              >
-                <div className="flex flex-col lg:flex-row gap-6 items-center justify-between">
-                  <div>
-                    <h3 className="text-xl font-bold">
-                      Ready to build your project?
-                    </h3>
-
-                    <p className="text-gray-400 mt-2">
-                      I'll review your requirements and reply within 24 hours.
-                    </p>
-                  </div>
-
-                  <motion.button
-                    whileHover={{
-                      scale: 1.05,
-                      boxShadow: "0 20px 40px rgba(34,197,94,.35)",
-                    }}
-                    whileTap={{
-                      scale: 0.95,
-                    }}
-                    onClick={sendToWhatsApp}
-                    className="  w-full  sm:w-auto  px-6  sm:px-8  py-3  sm:py-4  rounded-2xl  bg-green-500  hover:bg-green-600  text-white  font-semibold  text-base  sm:text-lg  flex  items-center  justify-center  gap-3  transition-all  duration-300  shadow-lg  hover:shadow-green-500/40"
-                  >
-                    <FaWhatsapp className="text-xl sm:text-2xl" />
-                    <span>Book Now via WhatsApp</span>
-                  </motion.button>
-                </div>
-
-                <div className="  mt-8  grid  grid-cols-1  md:grid-cols-3  gap-4">
-                  <div className="  rounded-2xl  bg-white/5  border  border-white/10  p-5  text-center">
-                    <h4 className="text-orange-500 text-2xl font-bold">⚡</h4>
-
-                    <p className="mt-3 font-semibold">Fast Response</p>
-
-                    <span className="text-gray-400 text-sm">
-                      Within 24 Hours
-                    </span>
-                  </div>
-
-                  <div className="  rounded-2xl  bg-white/5  border  border-white/10  p-5  text-center">
-                    <h4 className="text-orange-500 text-2xl font-bold">🔒</h4>
-
-                    <p className="mt-3 font-semibold">Secure Discussion</p>
-
-                    <span className="text-gray-400 text-sm">
-                      Your information is safe
-                    </span>
-                  </div>
-
-                  <div className="  rounded-2xl  bg-white/5  border  border-white/10  p-5  text-center ">
-                    <h4 className="text-orange-500 text-2xl font-bold">🚀</h4>
-
-                    <p className="mt-3 font-semibold">Premium Quality</p>
-
-                    <span className="text-gray-400 text-sm">
-                      Modern & Responsive Website
-                    </span>
-                  </div>
-                </div>
-              </motion.div>
+              <input
+                id="booking-name"
+                type="text"
+                name="name"
+                value={form.name}
+                onChange={handleChange}
+                autoComplete="name"
+                required
+                className="nb-input"
+              />
             </div>
-          </motion.div>
-        </motion.div>
-      )}
-    </AnimatePresence>
+
+            <div className="nb-field">
+              <label className="nb-label" htmlFor="booking-email">
+                Email Address *
+              </label>
+
+              <input
+                id="booking-email"
+                type="email"
+                name="email"
+                value={form.email}
+                onChange={handleChange}
+                autoComplete="email"
+                required
+                className="nb-input"
+              />
+            </div>
+
+            <div className="nb-field">
+              <label className="nb-label" htmlFor="booking-phone">
+                Phone Number *
+              </label>
+
+              <input
+                id="booking-phone"
+                type="text"
+                name="phone"
+                value={form.phone}
+                onChange={handleChange}
+                autoComplete="tel"
+                required
+                className="nb-input"
+              />
+            </div>
+
+            <div className="nb-field">
+              <label className="nb-label" htmlFor="booking-company">
+                Company / Brand
+              </label>
+
+              <input
+                id="booking-company"
+                type="text"
+                name="company"
+                value={form.company}
+                onChange={handleChange}
+                autoComplete="organization"
+                className="nb-input"
+              />
+            </div>
+
+            <div className="nb-field">
+              <label className="nb-label" htmlFor="booking-budget">
+                Budget
+              </label>
+
+              <select
+                id="booking-budget"
+                name="budget"
+                value={form.budget}
+                onChange={handleChange}
+                className="nb-input"
+              >
+                <option value="">Select Budget</option>
+                <option value="₹5,000 - ₹10,000">₹5,000 - ₹10,000</option>
+                <option value="₹10,000 - ₹20,000">₹10,000 - ₹20,000</option>
+                <option value="₹20,000 - ₹40,000">₹20,000 - ₹40,000</option>
+                <option value="₹40,000+">₹40,000+</option>
+              </select>
+            </div>
+
+            <div className="nb-field">
+              <label className="nb-label" htmlFor="booking-timeline">
+                Timeline
+              </label>
+
+              <select
+                id="booking-timeline"
+                name="timeline"
+                value={form.timeline}
+                onChange={handleChange}
+                className="nb-input"
+              >
+                <option value="">Select Timeline</option>
+                <option value="Within 1 Week">Within 1 Week</option>
+                <option value="2-3 Weeks">2-3 Weeks</option>
+                <option value="1 Month">1 Month</option>
+                <option value="1-2 Months">1-2 Months</option>
+                <option value="More than 2 Months">More than 2 Months</option>
+                <option value="Flexible">I&apos;m Flexible</option>
+              </select>
+            </div>
+
+            <div className="nb-field nb-field--full">
+              <label className="nb-label" htmlFor="booking-details">
+                Project Details *
+              </label>
+
+              <textarea
+                id="booking-details"
+                rows={6}
+                name="details"
+                value={form.details}
+                onChange={handleChange}
+                placeholder="Tell me about your project..."
+                required
+                className="nb-input"
+              />
+            </div>
+          </div>
+
+          <div className="nb-modal__confirm">
+            <div>
+              <h3>Ready to build your project?</h3>
+              <p>I&apos;ll review your requirements and reply within 24 hours.</p>
+            </div>
+
+            <button
+              type="button"
+              onClick={sendToWhatsApp}
+              className="nb-btn nb-btn--signal"
+            >
+              <FaWhatsapp aria-hidden="true" />
+              <span>Book Now via WhatsApp</span>
+            </button>
+          </div>
+
+          <div className="nb-modal__trust">
+            <div className="nb-modal__trust-item">
+              <FaBolt aria-hidden="true" />
+              <strong>Fast Response</strong>
+              <span>Within 24 Hours</span>
+            </div>
+
+            <div className="nb-modal__trust-item">
+              <FaShieldAlt aria-hidden="true" />
+              <strong>Secure Discussion</strong>
+              <span>Your information is safe</span>
+            </div>
+
+            <div className="nb-modal__trust-item">
+              <FaStar aria-hidden="true" />
+              <strong>Premium Quality</strong>
+              <span>Modern &amp; Responsive Website</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }

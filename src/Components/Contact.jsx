@@ -1,14 +1,13 @@
-import { motion } from "framer-motion";
 import { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
 import { toast } from "react-toastify";
-
 import {
   FaGithub,
   FaLinkedin,
   FaEnvelope,
   FaPhone,
   FaMapMarkerAlt,
+  FaPaperPlane,
 } from "react-icons/fa";
 
 export default function Contact() {
@@ -28,204 +27,156 @@ export default function Contact() {
         import.meta.env.VITE_EMAILJS_PUBLIC_KEY
       );
 
-      toast.success("Message sent successfully 🚀");
+      toast.success("Message sent successfully");
 
       form.current.reset();
     } catch (error) {
       console.error(error);
 
-      toast.error("Failed to send message ❌");
+      toast.error("Failed to send message");
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <section
-      id="contact"
-      className="min-h-screen px-6 lg:px-20 py-20 overflow-hidden"
-    >
-      <div className="max-w-7xl mx-auto">
-        {/* Heading */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-14"
-        >
-          <p className="text-orange-500 text-xl font-semibold tracking-lg">
-            Contact Me
-          </p>
+    <section id="contact" className="nb-section nb-section--cream">
+      <div className="nb-wrap">
+        <div className="nb-head">
+          <span className="nb-kicker nb-kicker--signal">Contact Me</span>
 
-          <h2 className="text-4xl md:text-5xl font-bold mt-2">
-            Let's Work Together
-          </h2>
+          <h2 className="nb-title nb-title--md">Let&apos;s Work Together</h2>
 
-          <p className="text-gray-400 mt-3">
+          <p className="nb-lede">
             Have a project in mind? Feel free to reach out.
           </p>
-        </motion.div>
+        </div>
 
-        <div className="grid lg:grid-cols-2 gap-10">
-          {/* Left Side */}
-          <motion.div
-            initial={{ opacity: 0, x: -40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: false }}
-            transition={{ duration: 0.6 }}
-            className="
-              bg-white/5
-              backdrop-blur-md
-              border border-white/10
-              rounded-3xl
-              p-8
-            "
-          >
-            <h3 className="text-2xl font-semibold mb-8">
-              Contact Information
-            </h3>
+        <div className="nb-contact__grid">
+          <div className="nb-contact__info">
+            <h2>Contact Information</h2>
 
-            <div className="space-y-6">
-              <div className="flex items-center gap-4">
-                <FaEnvelope className="text-orange-500 text-xl" />
-                <span className="text-gray-300">
-                  rahulrp4021@gmail.com
+            <div className="nb-contact__list">
+              <div className="nb-contact__row">
+                <span className="nb-contact__row-icon">
+                  <FaEnvelope aria-hidden="true" />
                 </span>
+                <a href="mailto:rahulrp4021@gmail.com">rahulrp4021@gmail.com</a>
               </div>
 
-              <div className="flex items-center gap-4">
-                <FaPhone className="text-orange-500 text-xl" />
-                <span className="text-gray-300">
-                  +91 9342830199
+              <div className="nb-contact__row">
+                <span className="nb-contact__row-icon">
+                  <FaPhone aria-hidden="true" />
                 </span>
+                <a href="tel:+919342830199">+91 9342830199</a>
               </div>
 
-              <div className="flex items-center gap-4">
-                <FaMapMarkerAlt className="text-orange-500 text-xl" />
-                <span className="text-gray-300">
-                  Tamil Nadu, India
+              <div className="nb-contact__row">
+                <span className="nb-contact__row-icon">
+                  <FaMapMarkerAlt aria-hidden="true" />
                 </span>
+                <span>Tamil Nadu, India</span>
               </div>
             </div>
 
-            {/* Social Links */}
-            <div className="flex gap-4 mt-10">
+            <div className="nb-contact__socials">
               <a
                 href="https://github.com/rahulrp17"
                 target="_blank"
                 rel="noreferrer"
-                className="
-                  p-4
-                  rounded-full
-                  bg-white/10
-                  hover:bg-orange-500
-                  transition
-                "
+                className="nb-icon-btn"
+                aria-label="GitHub profile"
               >
-                <FaGithub size={22} />
+                <FaGithub aria-hidden="true" />
               </a>
 
               <a
-                href="http://www.linkedin.com/in/rahulrp4021"
+                href="https://www.linkedin.com/in/rahulrp4021"
                 target="_blank"
                 rel="noreferrer"
-                className="
-                  p-4
-                  rounded-full
-                  bg-white/10
-                  hover:bg-orange-500
-                  transition
-                "
+                className="nb-icon-btn"
+                aria-label="LinkedIn profile"
               >
-                <FaLinkedin size={22} />
+                <FaLinkedin aria-hidden="true" />
               </a>
             </div>
-          </motion.div>
+          </div>
 
-          {/* Right Side */}
-          <motion.form
+          <form
             ref={form}
             onSubmit={sendEmail}
-            initial={{ opacity: 0, x: 40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: false }}
-            transition={{ duration: 0.6 }}
-            className="
-              bg-white/5
-              backdrop-blur-md
-              border border-white/10
-              rounded-3xl
-              p-8
-              space-y-5
-            "
+            className="nb-contact__form"
+            aria-busy={loading}
           >
-            <input
-              type="text"
-              name="from_name"
-              placeholder="Your Name"
-              required
-              className="
-                w-full
-                p-4
-                rounded-xl
-                bg-black/20
-                border border-white/10
-                outline-none
-                focus:border-orange-500
-              "
-            />
+            <div className="nb-field">
+              <label className="nb-label" htmlFor="contact-name">
+                Your Name
+              </label>
+              <input
+                id="contact-name"
+                type="text"
+                name="from_name"
+                placeholder="Your Name"
+                autoComplete="name"
+                required
+                className="nb-input"
+              />
+            </div>
 
-            <input
-              type="email"
-              name="from_email"
-              placeholder="Your Email"
-              required
-              className="
-                w-full
-                p-4
-                rounded-xl
-                bg-black/20
-                border border-white/10
-                outline-none
-                focus:border-orange-500
-              "
-            />
+            <div className="nb-field">
+              <label className="nb-label" htmlFor="contact-email">
+                Your Email
+              </label>
+              <input
+                id="contact-email"
+                type="email"
+                name="from_email"
+                placeholder="Your Email"
+                autoComplete="email"
+                required
+                className="nb-input"
+              />
+            </div>
 
-            <textarea
-              rows="6"
-              name="message"
-              placeholder="Your Message"
-              required
-              className="
-                w-full
-                p-4
-                rounded-xl
-                bg-black/20
-                border border-white/10
-                outline-none
-                resize-none
-                focus:border-orange-500
-              "
-            />
+            <div className="nb-field">
+              <label className="nb-label" htmlFor="contact-subject">
+                Subject
+              </label>
+              <input
+                id="contact-subject"
+                type="text"
+                name="subject"
+                placeholder="What is this about?"
+                autoComplete="off"
+                maxLength="120"
+                required
+                className="nb-input"
+              />
+            </div>
+
+            <div className="nb-field">
+              <label className="nb-label" htmlFor="contact-message">
+                Your Message
+              </label>
+              <textarea
+                id="contact-message"
+                rows="6"
+                name="message"
+                placeholder="Your Message"
+                required
+                className="nb-input"
+              />
+            </div>
 
             <button
               type="submit"
               disabled={loading}
-              className="
-                px-6
-                py-3
-                bg-orange-500
-                rounded-full
-                hover:bg-orange-600
-                transition
-                disabled:opacity-50
-                disabled:cursor-not-allowed
-              "
+              className="nb-btn nb-btn--yellow"
             >
+              <FaPaperPlane aria-hidden="true" />
               {loading ? "Sending..." : "Send Message"}
             </button>
-          </motion.form>
+          </form>
         </div>
       </div>
     </section>

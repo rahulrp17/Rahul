@@ -121,7 +121,7 @@ export const projects = [
     category: "API",
     image: weather,
     description: "Real-time weather forecasting app using API integration.",
-    tech: ["React", "API"],
+    tech: ["React", "API", "Tailwind"],
     github: "https://github.com/rahulrp17/Weather-App",
     demo: "https://weather-app-cvzb.onrender.com/",
     features: [
@@ -134,7 +134,7 @@ export const projects = [
 
   {
     title: "Authify",
-    category: "full stack",
+    category: "Full Stack",
     image: authify,
     description: "Authentication system featuring JWT login and registration.",
     tech: ["React", "Tailwind", "Spring Boot"],
