@@ -143,8 +143,8 @@ export default function Hero() {
               <h2>Rahul</h2>
               <p>MERN Stack Developer</p>
 
-              <span className="nb-status">
-                <span className="nb-status__dot bg-green-500!" aria-hidden="true" />
+              <span className="nb-status font-bold! text-lg!">
+                <span className="nb-status__dot bg-green-500! " aria-hidden="true" />
                OPEN TO WORK
               </span>
 

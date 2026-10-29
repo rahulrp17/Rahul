@@ -43,33 +43,85 @@ const timelineData = [
   },
 ];
 
+const timelineGroups = timelineData.reduce((groups, item, index) => {
+  const existingGroup = groups.find((group) => group.year === item.year);
+  const entry = { ...item, index: index + 1 };
+
+  if (existingGroup) {
+    existingGroup.items.push(entry);
+  } else {
+    groups.push({ year: item.year, items: [entry] });
+  }
+
+  return groups;
+}, []);
+
 export default function Timeline() {
   return (
-    <section id="timeline" className="nb-section nb-section--cream">
+    <section
+      id="timeline"
+      className="nb-section nb-section--cream nb-timeline-section"
+    >
       <div className="nb-wrap">
-        <div className="nb-head">
-          <span className="nb-kicker nb-kicker--violet">Journey</span>
+        <div className="nb-head nb-head--split nb-timeline-head">
+          <div className="nb-head__copy">
+            <span className="nb-kicker nb-kicker--violet">Journey</span>
 
-          <h2 className="nb-title nb-title--md">My Development Timeline</h2>
+            <h2 className="nb-title nb-title--md">Development Timeline</h2>
 
-          <p className="nb-lede">
-            Projects and milestones throughout my learning journey.
-          </p>
+            <p className="nb-lede">
+              A record of the projects and milestones that shaped my approach
+              to building software.
+            </p>
+          </div>
+
+          <div className="nb-timeline__summary" aria-label="Timeline summary">
+            <div>
+              <strong>{String(timelineData.length).padStart(2, "0")}</strong>
+              <span>Projects</span>
+            </div>
+
+            <div>
+              <strong>{String(timelineGroups.length).padStart(2, "0")}</strong>
+              <span>Years</span>
+            </div>
+          </div>
         </div>
 
-        <ol className="nb-ledger">
-          {timelineData.map((item, index) => (
-            <li className="nb-step" key={`${item.year}-${item.title}`}>
-              <div className="nb-step__year">
-                <span className="nb-step__num" aria-hidden="true">
-                  {String(index + 1).padStart(2, "0")}
+        <ol className="nb-timeline">
+          {timelineGroups.map((group) => (
+            <li className="nb-timeline__group" key={group.year}>
+              <div className="nb-timeline__year">
+                <span className="nb-timeline__dot" aria-hidden="true" />
+
+                <time dateTime={group.year}>{group.year}</time>
+
+                <span>
+                  {String(group.items.length).padStart(2, "0")} projects
                 </span>
-                <strong>{item.year}</strong>
               </div>
 
-              <div className="nb-step__body">
-                <h3>{item.title}</h3>
-                <p>{item.description}</p>
+              <div className="nb-timeline__entries">
+                {group.items.map((item) => (
+                  <article
+                    className="nb-timeline__card"
+                    key={`${item.year}-${item.title}`}
+                  >
+                    <div
+                      className="nb-timeline__index"
+                      aria-hidden="true"
+                    >
+                      <span>Project</span>
+                      <strong>{String(item.index).padStart(2, "0")}</strong>
+                    </div>
+
+                    <div className="nb-timeline__content">
+                      <h3>{item.title}</h3>
+
+                      <p>{item.description}</p>
+                    </div>
+                  </article>
+                ))}
               </div>
             </li>
           ))}

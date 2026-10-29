@@ -6,6 +6,8 @@ import authify from "../assets/projects/authify.webp";
 import todo from "../assets/projects/todo.webp";
 import craftAI from "../assets/projects/craftAI.png";
 import AureliaStay from "../assets/projects/image.png";
+import rahul from "../assets/projects/rahul.webp";
+
 export const projects = [
 
   {
@@ -97,6 +99,23 @@ export const projects = [
       "Shopping Cart",
       "Responsive Layout",
       "Product Listing",
+    ],
+  },
+
+    {
+    title: "Rahul-Portfolio",
+    category: "Frontend",
+    image: rahul,
+    description:
+      "Animated portfolio built with React, Vite, Tailwind CSS and Framer Motion.",
+    tech: ["React", "Vite", "Tailwind", "Framer Motion"],
+    github: "https://github.com/rahulrp17/Rahul-Portfolio",
+    demo: "https://rahul-portfolio-krhj.onrender.com/",
+    features: [
+      "Animated Portfolio",
+      "Responsive Design",
+      "Project Showcase",
+      "Contact Form",
     ],
   },
 

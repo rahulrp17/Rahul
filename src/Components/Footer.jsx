@@ -9,8 +9,7 @@ export default function Footer() {
             <h2>Rahul.</h2>
 
             <p>
-              Frontend Developer &amp; React Developer passionate about building
-              modern web applications and engaging user experiences.
+              MERN Stack Developer &amp; Frontend Developer passionate about building modern web applications and engaging user experiences.
             </p>
           </div>
 

@@ -3,7 +3,7 @@ import AboutArtwork from "./AboutArtwork";
 export default function About() {
   const stats = [
     {
-      title: "6+",
+      title: "10+",
       subtitle: "Projects",
     },
     {

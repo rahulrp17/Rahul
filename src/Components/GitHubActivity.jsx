@@ -234,7 +234,7 @@ export default function GitHubActivity() {
             <span className="nb-kicker bg-orange-600!">Open Source</span>
 
             <h2 className="nb-title nb-title--md" id="github-title">
-              Building In <span className="nb-mark bg-yellow-400! text-black border-b-5  border-r-5 pr-4! border-orange-600!">Public</span>
+              Building In <span className="nb-mark bg-yellow-300! text-black border-b-5  border-r-5 pr-4! border-orange-600!">Public</span>
             </h2>
 
             <p className="nb-lede">

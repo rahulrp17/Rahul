@@ -187,6 +187,7 @@ export default function AboutArtwork() {
           fontSize="15"
           fontWeight="800"
           fill="#000000"
+          className="font-bold! text-2xl"
         >
           OPEN TO WORK
         </text>
