@@ -135,6 +135,23 @@ export const projects = [
       "Contact Form",
     ],
   },
+
+    {
+    title: "Authify",
+    category: "Full Stack",
+    image: authify,
+    description: "Authentication system featuring JWT login and registration.",
+    tech: ["React", "Tailwind", "Spring Boot"],
+    github: "https://github.com/rahulrp17/Authify",
+    demo: "https://authify-for-security.vercel.app/",
+    features: [
+      "JWT Authentication",
+      "Login",
+      "Registration",
+      "Protected Routes",
+    ],
+  },
+
   {
     title: "Weather App",
     category: "API",
@@ -151,21 +168,7 @@ export const projects = [
     ],
   },
 
-  {
-    title: "Authify",
-    category: "Full Stack",
-    image: authify,
-    description: "Authentication system featuring JWT login and registration.",
-    tech: ["React", "Tailwind", "Spring Boot"],
-    github: "https://github.com/rahulrp17/Authentication_System",
-    demo: "https://authentication-system-frontend-cukc.onrender.com/",
-    features: [
-      "JWT Authentication",
-      "Login",
-      "Registration",
-      "Protected Routes",
-    ],
-  },
+
 
   {
     title: "Todo App",
