@@ -93,7 +93,7 @@ export const projects = [
       "Food ordering application with menu browsing, cart management and responsive design.",
     tech: ["React", "CSS", "Framer Motion", "Express js", "MongoDB"],
     github: "https://github.com/rahulrp17/Food-Delivery",
-    demo: "https://food-delivery-frontend-ib75.onrender.com/",
+    demo: "https://food-delivery-frontend-c5f4.onrender.com",
     features: [
       "Food Ordering",
       "Shopping Cart",
